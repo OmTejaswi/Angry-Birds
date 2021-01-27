@@ -15,11 +15,13 @@ class Bird extends BaseClass{
     this.Xarray.push(birdX);
     this.Yarray.push(birdY);
 
+    push()
     for(var i = 0; i< this.Xarray.length; i++) {
           ellipseMode(RADIUS);
           fill("white");
           noStroke();
           ellipse(this.Xarray[i], this.Yarray[i],2);
     }
+    pop();
   }
 }
