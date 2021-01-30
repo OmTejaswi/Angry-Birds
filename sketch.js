@@ -43,6 +43,9 @@ function setup(){
 
     eboj = new constrant(bird.body,{x: 190, y:60});
 
+    //call
+    api();
+
 }
 
 function draw(){
@@ -80,4 +83,12 @@ function mouseDragged() {
 
 function mouseReleased() {
      eboj.fly();
+}
+
+async function api() {
+    var timeData = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+    var jsonCoverter = await timeData.json();
+    var date = jsonCoverter.datetime;
+    var take = date.slice(11,13);
+    console.log(take);
 }
