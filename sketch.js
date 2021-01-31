@@ -22,7 +22,7 @@ function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
     world = engine.world;
-    background("#fff");;
+    
     
     ground = new Ground(600,height,1200,20)
 
@@ -61,7 +61,7 @@ function draw(){
     Engine.update(engine);
 
    
-
+    background("#fff");
 
     if(bgNight) {
         background(bgNight);
