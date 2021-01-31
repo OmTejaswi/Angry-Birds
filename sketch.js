@@ -7,16 +7,22 @@ var box1, pig1;
 var backGround;
 var platform;
 var eboj;
+var bgNight;
+
+var gameState;
+var fired;
+var score = 0;
 
 function preload() {
-    backGround = loadImage("sprites/bg.png")
+    //bg = loadImage("sprites/bg.png");
+    api();
 }
 
 function setup(){
     var canvas = createCanvas(1200,400);
     engine = Engine.create();
     world = engine.world;
-
+    background("#fff");;
     
     ground = new Ground(600,height,1200,20)
 
@@ -44,13 +50,22 @@ function setup(){
     eboj = new constrant(bird.body,{x: 190, y:60});
 
     //call
-    api();
+    //api();
+
+    fired = false;
 
 }
 
 function draw(){
-    background(backGround);
+    
     Engine.update(engine);
+
+   
+
+
+    if(bgNight) {
+        background(bgNight);
+    }
 
     box1.display();
     box2.display();
@@ -74,15 +89,31 @@ function draw(){
 
     eboj.display();
 
+    //scoring
+    pig1.scoring();
+    pig3.scoring();
+
+   // drawSprites();
+    
+    textSize(20);
+    fill("black")
+   // noStroke();
+    text("score: " + score, width-200,height/3);
+    pop();
+
     
 }
 
 function mouseDragged() {
+    if(fired === false) {
     Matter.Body.setPosition(bird.body,{x:mouseX , y: mouseY})
+    }
 }
 
 function mouseReleased() {
      eboj.fly();
+     fired = true;
+ //    gameState = "over";
 }
 
 async function api() {
@@ -91,4 +122,11 @@ async function api() {
     var date = jsonCoverter.datetime;
     var take = date.slice(11,13);
     console.log(take);
+
+    if(take > 06 && take < 18) {
+        bg = "sprites/bg.png";
+    } else {
+        bg = "sprites/bg2.jpg";
+    }
+    bgNight = loadImage(bg);
 }

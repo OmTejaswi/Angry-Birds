@@ -22,5 +22,10 @@ class Pig extends BaseClass {
         pop();
       }
     }
+    scoring() {
+      if(this.fade <0 ) {
+         score += 1;
+      }
+    }
   }
   

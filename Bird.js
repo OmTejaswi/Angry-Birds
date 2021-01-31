@@ -9,11 +9,13 @@ class Bird extends BaseClass{
   display(){
     super.display();
 
+    if(this.body.speed > 5 && this.body.position.x > 200) {
     var birdX = [this.body.position.x]
     var birdY = [this.body.position.y]
-
+    
     this.Xarray.push(birdX);
     this.Yarray.push(birdY);
+    }
 
     push()
     for(var i = 0; i< this.Xarray.length; i++) {
