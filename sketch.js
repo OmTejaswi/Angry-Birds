@@ -61,7 +61,7 @@ function draw(){
     Engine.update(engine);
 
    
-    background("#fff");
+ background("#fff");
 
     if(bgNight) {
         background(bgNight);
